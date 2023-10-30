@@ -82,22 +82,21 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = function()
+    -- change the background color of floating windows and borders.
+    vim.cmd('highlight NormalFloat guibg=none guifg=none')
+    vim.cmd('highlight FloatBorder guifg=' .. colors.fg .. ' guibg=none')
+    vim.cmd('highlight NormalNC guibg=none guifg=none')
 
--- vim.api.nvim_create_autocmd('ColorScheme', {
---   callback = function()
---     -- change the background color of floating windows and borders.
---     vim.cmd('highlight NormalFloat guibg=none guifg=none')
---     vim.cmd('highlight FloatBorder guifg=' .. colors.fg .. ' guibg=none')
---     vim.cmd('highlight NormalNC guibg=none guifg=none')
-
---     -- change neotree background colors
---     -- Default: NeoTreeNormal  xxx ctermfg=223 ctermbg=232 guifg=#d4be98 guibg=#141617
---     -- vim.cmd('highlight NeoTreeNormal guibg=#252e33 guifg=none')
---     -- vim.cmd('highlight NeoTreeFloatNormal guifg=none guibg=none')
---     -- vim.cmd('highlight NeoTreeFloatBorder gui=none guifg=' .. colors.fg .. ' guibg=none')
---     -- vim.cmd('highlight NeoTreeEndOfBuffer guibg=#252e33') -- 1d2021
---   end,
--- })
+    -- change neotree background colors
+    -- Default: NeoTreeNormal  xxx ctermfg=223 ctermbg=232 guifg=#d4be98 guibg=#141617
+    -- vim.cmd('highlight NeoTreeNormal guibg=#252e33 guifg=none')
+    -- vim.cmd('highlight NeoTreeFloatNormal guifg=none guibg=none')
+    -- vim.cmd('highlight NeoTreeFloatBorder gui=none guifg=' .. colors.fg .. ' guibg=none')
+    -- vim.cmd('highlight NeoTreeEndOfBuffer guibg=#252e33') -- 1d2021
+  end,
+})
 
 -- close some filetypes with <q>
 vim.api.nvim_create_autocmd('FileType', {
