@@ -5,6 +5,7 @@ end
 return {
   {
     "simrat39/rust-tools.nvim",
+    enabled = false,
     dependencies = {
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',

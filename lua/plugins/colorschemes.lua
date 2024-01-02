@@ -102,6 +102,14 @@ return {
     end
   },
   {
+    'LunarVim/darkplus.nvim',
+    enabled = true,
+    priority = 1000,
+    config = function()
+      -- vim.cmd.colorscheme 'darkplus'
+    end
+  },
+  {
     'sainnhe/gruvbox-material',
     enabled = true,
     priority = 1000,
