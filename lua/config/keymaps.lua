@@ -5,6 +5,9 @@ local map = vim.keymap.set
 map("n", "<C-d>", "<C-d>zz", opts)
 map("n", "<C-u>", "<C-u>zz", opts)
 
+map('n', 'W', ":HopWord<cr>", { silent = true })
+map('n', 'L', ":HopLine<cr>", { silent = true })
+
 -- Move selected line / block of text in visual mode
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)

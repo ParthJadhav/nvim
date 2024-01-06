@@ -121,7 +121,7 @@ M.toggle_cursor_line = function()
   if vim.wo.cursorline then
     vim.wo.cursorline = false
   else
-    vim.wo.cursorline = true
+    vim.wo.cursorline = false
   end
 end
 

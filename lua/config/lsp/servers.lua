@@ -7,11 +7,6 @@ return {
       },
     },
   },
-  terraformls = {
-    cmd = { "terraform-ls" },
-    arg = { "server" },
-    filetypes = { "terraform", "tf", "terraform-vars" },
-  },
   lua_ls = {
     Lua = {
       telemetry = { enable = false },
@@ -35,7 +30,6 @@ return {
   },
   -- tsserver = {},
   gopls = {},
-  solidity_ls_nomicfoundation = {},
   yamlls = {
     cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml" },

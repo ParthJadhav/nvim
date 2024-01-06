@@ -41,7 +41,8 @@ return {
 
         sources = {
           formatting.stylua,
-          formatting.prettier,
+          formatting.biome,
+          -- formatting.prettier,
           formatting.gofumpt,
           formatting.terraform_fmt,
           formatting.buf,
