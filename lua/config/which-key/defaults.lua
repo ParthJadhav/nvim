@@ -1,7 +1,6 @@
 return {
   mode = { "n", "v" },
   [";"] = { ":Alpha<CR>", "Dashboard" },
-  w = { ":w!<CR>", "Save" },
   q = { ":confirm q<CR>", "Quit" },
   c = { ":bd<CR>", "Close Buffer" },
   h = { ":nohlsearch<CR>", "No Highlight" },
@@ -13,7 +12,7 @@ return {
   A = "Swap previous param",
   U = { ":UndotreeToggle<CR>", "Toggle UndoTree" },
   o = { require('telescope.builtin').buffers, "Open Buffer" },
-  W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
+  w = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
   u = {
     name = "UI",
     c = { require('config.utils').toggle_set_color_column, "Toggle Color Line" },

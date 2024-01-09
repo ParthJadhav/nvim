@@ -38,7 +38,6 @@ return {
             })
         end
     },
-    
     {
         "zbirenbaum/copilot-cmp",
         -- after = { "copilot.lua" },
