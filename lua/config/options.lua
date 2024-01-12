@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
@@ -25,7 +25,7 @@ local options = {
   termguicolors = true,                    -- set term gui colors (most terminals support this)
   timeoutlen = 1000,                       -- time to wait for a mapped sequence to complete (in milliseconds)
   undofile = true,                         -- enable persistent undo
-  updatetime = 100,                        -- faster completion (4000ms default)
+  updatetime = 1,                          -- faster completion (4000ms default)
   writebackup = false,                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   expandtab = true,                        -- convert tabs to spaces
   shiftwidth = 2,                          -- the number of spaces inserted for each indentation
@@ -33,8 +33,8 @@ local options = {
   cursorline = false,                      -- highlight the current line
   number = true,                           -- set numbered lines
   breakindent = true,                      -- wrap lines with indent
-  relativenumber = false,                   -- set relative numbered lines
-  numberwidth = 4,                         -- set number column width to 2 {default 4}
+  relativenumber = false,                  -- set relative numbered lines
+  numberwidth = 2,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
   scrolloff = 8,                           -- Makes sure there are always eight lines of context

@@ -117,14 +117,6 @@ M.toggle_set_color_column = function()
   end
 end
 
-M.toggle_cursor_line = function()
-  if vim.wo.cursorline then
-    vim.wo.cursorline = false
-  else
-    vim.wo.cursorline = false
-  end
-end
-
 M.toggle_go_test = function()
   -- Get the current buffer's file name
   local current_file = vim.fn.expand('%:p')

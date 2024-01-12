@@ -16,7 +16,6 @@ return {
   u = {
     name = "UI",
     c = { require('config.utils').toggle_set_color_column, "Toggle Color Line" },
-    l = { require('config.utils').toggle_cursor_line, "Toggle Cursor Line" },
     s = {
       name = "Lualine",
       h = { require('lualine').hide(), "Hide Lualine" },
