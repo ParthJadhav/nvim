@@ -75,6 +75,8 @@ map("n", "<C-s>", ":Telescope current_buffer_fuzzy_find<CR>", opts)
 -- search modified files
 map("n", "<Leader>m", ":Telescope git_status<CR>", opts)
 
+map("n", "<Leader>sb,", ":BufferLinePick<CR>", opts)
+
 -- Split line with X
 map('n', 'X', ':keeppatterns substitute/\\s*\\%#\\s*/\\r/e <bar> normal! ==^<cr>', { silent = true })
 

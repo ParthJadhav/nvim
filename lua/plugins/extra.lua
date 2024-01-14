@@ -3,17 +3,6 @@ return {
     "windwp/nvim-ts-autotag",
     opts = {},
   },
-  {
-    "famiu/bufdelete.nvim",
-    event = "VeryLazy",
-    config = function()
-      local keymap = vim.keymap.set
-      local opts = { noremap = true, silent = true }
-      -- keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
-      keymap("n", "Q", ":lua require('bufdelete').bufdelete(0, false)<cr>", opts)
-    end,
-  },
-  -- comments
   { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
   {
     "echasnovski/mini.comment",
@@ -37,16 +26,6 @@ return {
     end,
   },
   {
-    "j-hui/fidget.nvim",
-    branch = "legacy",
-    enabled = false,
-    config = function()
-      require("fidget").setup({
-        window = { blend = 0 },
-      })
-    end,
-  },
-  {
     "dnlhc/glance.nvim",
     config = function()
       require("glance").setup({
@@ -62,10 +41,10 @@ return {
       })
     end,
     keys = {
-      { "gD", "<CMD>Glance definitions<CR>",      desc = "Glance definitions" },
-      { "gR", "<CMD>Glance references<CR>",       desc = "Glance references" },
+      { "gD", "<CMD>Glance definitions<CR>", desc = "Glance definitions" },
+      { "gR", "<CMD>Glance references<CR>", desc = "Glance references" },
       { "gY", "<CMD>Glance type_definitions<CR>", desc = "Glance type_definitions" },
-      { "gM", "<CMD>Glance implementations<CR>",  desc = "Glance implementations" },
+      { "gM", "<CMD>Glance implementations<CR>", desc = "Glance implementations" },
     },
   },
   {
@@ -164,8 +143,8 @@ return {
   {
     "ggandor/leap.nvim",
     keys = {
-      { "s",  mode = { "n", "x", "o" }, desc = "Leap forward to" },
-      { "S",  mode = { "n", "x", "o" }, desc = "Leap backward to" },
+      { "s", mode = { "n", "x", "o" }, desc = "Leap forward to" },
+      { "S", mode = { "n", "x", "o" }, desc = "Leap backward to" },
       { "gs", mode = { "n", "x", "o" }, desc = "Leap from windows" },
     },
     config = function(_, opts)
@@ -176,13 +155,6 @@ return {
       leap.add_default_mappings(true)
       vim.keymap.del({ "x", "o" }, "x")
       vim.keymap.del({ "x", "o" }, "X")
-    end,
-  },
-
-  {
-    "LunarVim/breadcrumbs.nvim",
-    config = function()
-      require("breadcrumbs").setup()
     end,
   },
   {
