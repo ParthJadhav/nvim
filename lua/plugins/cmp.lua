@@ -91,7 +91,7 @@ return {
         end, { "i", "s" }),
       }),
       window = {
-        completion = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered("rounded"),
         documentation = cmp.config.window.bordered(),
       },
       sources = {

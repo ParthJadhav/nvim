@@ -6,7 +6,7 @@ return {
   opts = {
     options = {
       mode = "buffers",
-      separator_style = "slant",
+      separator_style = "thick",
     },
   },
   keys = {

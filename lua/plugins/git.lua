@@ -8,7 +8,7 @@ return {
         signs = {
           add = {
             hl = "GitSignsAdd",
-            text = icons.ui.BoldLineLeft,
+            text = icons.ui.LineLeft,
             numhl = "GitSignsAddNr",
             linehl = "GitSignsAddLn",
           },

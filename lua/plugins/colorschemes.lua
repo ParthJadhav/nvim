@@ -12,7 +12,10 @@ return {
         },
         color_overrides = {
           mocha = {
-            base = "#11111B",
+            base = "#121212", -- nvim bg
+            mantle = "#181818", -- popups bg
+            surface0 = "#1e1e1e", -- popups highlight 
+            surface1 = "#323232", -- selection bg
           },
         },
         transparent_background = false,
