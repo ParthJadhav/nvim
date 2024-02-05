@@ -21,6 +21,26 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
     local lspkind = require("lspkind")
+    local ELLIPSIS_CHAR = "…"
+    local MAX_LABEL_WIDTH = 25
+    local MAX_KIND_WIDTH = 14
+
+    local get_ws = function(max, len)
+      return (" "):rep(max - len)
+    end
+    local format = function(_, item)
+      local content = item.abbr
+      -- local kind_symbol = symbols[item.kind]
+      -- item.kind = kind_symbol .. get_ws(MAX_KIND_WIDTH, #kind_symbol)
+
+      if #content > MAX_LABEL_WIDTH then
+        item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
+      else
+        item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
+      end
+
+      return item
+    end
 
     local kind_icons = {
       Text = "",
@@ -108,26 +128,13 @@ return {
         { name = "tmux" },
       },
       formatting = {
-        format = function(entry, vim_item)
-          local lspkind_ok, lspkind = pcall(require, "lspkind")
-          if not lspkind_ok then
-            -- From kind_icons array
-            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-            -- Source
-            vim_item.menu = ({
-              copilot = "[Copilot]",
-              nvim_lsp = "[LSP]",
-              nvim_lua = "[Lua]",
-              luasnip = "[LuaSnip]",
-              buffer = "[Buffer]",
-              latex_symbols = "[LaTeX]",
-            })[entry.source.name]
-            return vim_item
-          else
-            -- From lspkind
-            return lspkind.cmp_format()(entry, vim_item)
-          end
-        end,
+        format = format,
+        expandable_indicator = true,
+        fields = {
+          "abbr",
+          "kind",
+          "menu",
+        },
       },
     })
   end,
