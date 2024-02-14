@@ -1,66 +1,61 @@
+local config = {
+  options = {
+    icons_enabled = true,
+    theme = 'catppuccin',
+    component_separators = {'', ''},
+    section_separators = {'', ''},
+    disabled_filetypes = {}
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'filename'},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {'encoding', 'fileformat', 'filetype'},
+    lualine_z = {'branch'},
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {'filename'},
+    lualine_x = {'location'},
+    lualine_y = {},
+    lualine_z = {}
+  },
+  tabline = {},
+  extensions = {}
+}
+
+-- Inserts a component in lualine_x ot right section
+local function ins_right(component)
+  table.insert(config.sections.lualine_x, component)
+end
+
+ins_right {
+  'lsp_progress',
+  separators = {
+    component = ' ',
+    progress = ' | ',
+    message = { pre = '(', post = ')' },
+    percentage = { pre = '', post = '%% ' },
+    title = { pre = '', post = '' },
+    lsp_client_name = { pre = '[', post = ']' },
+    spinner = { pre = '', post = '' },
+    message = { commenced = 'In Progress', completed = 'Completed' },
+  },
+  display_components = { 'lsp_client_name', { 'title' } },
+  timer = { progress_enddelay = 500, spinner = 1000, lsp_client_name_enddelay = 1000 },
+}
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
     "meuter/lualine-so-fancy.nvim",
+    "arkav/lualine-lsp-progress",
   },
   enabled = true,
   lazy = false,
   event = { "BufReadPost", "BufNewFile", "VeryLazy" },
-  config = function()
-    local icons = require("config.icons")
-    require("lualine").setup({
-      options = {
-        theme = "catppuccin",
-        globalstatus = true,
-        icons_enabled = true,
-        -- component_separators = { left = "│", right = "│" },
-        component_separators = { left = icons.ui.DividerRight, right = icons.ui.DividerLeft },
-        section_separators = { left = "", right = "" },
-        disabled_filetypes = {
-          statusline = {
-            "alfa-nvim",
-            "help",
-            "neo-tree",
-            "Trouble",
-            "spectre_panel",
-            "toggleterm",
-          },
-          winbar = {},
-        },
-      },
-      sections = {
-        lualine_a = {},
-        lualine_b = {
-          "fancy_branch",
-        },
-        lualine_c = {
-          {
-            "filename",
-            path = 1, -- 2 for full path
-            symbols = {
-              modified = "  ",
-              -- readonly = "  ",
-              -- unnamed = "  ",
-            },
-          },
-          { "fancy_diagnostics", sources = { "nvim_lsp" }, symbols = { error = " ", warn = " ", info = " " } },
-          { "fancy_searchcount" },
-        },
-        lualine_x = {
-        },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { "filename" },
-        -- lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      tabline = {},
-      extensions = { "neo-tree", "lazy" },
-    })
-  end,
+  config = config
 }
+
