@@ -1,6 +1,11 @@
+vim.api.nvim_set_hl(0, "FidgetTitle", { link = "NormalFloat" })
+vim.api.nvim_set_hl(0, "FidgetTask", { link = "NormalFloat" })
+
 require("config.keymaps")
 require("config.options")
 require("config.autocmds")
 require("config.abbreviations")
 require("config.lazy")
-require('transparent').clear_prefix('NeoTree')
+require("transparent").clear_prefix("NeoTree")
+require("transparent").clear_prefix("j-hui/fidget.nvim")
+require("transparent").clear_prefix("fidget.nvim")

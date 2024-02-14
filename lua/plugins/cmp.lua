@@ -23,24 +23,7 @@ return {
     local lspkind = require("lspkind")
     local ELLIPSIS_CHAR = "…"
     local MAX_LABEL_WIDTH = 25
-    local MAX_KIND_WIDTH = 14
-
-    local get_ws = function(max, len)
-      return (" "):rep(max - len)
-    end
-    local format = function(_, item)
-      local content = item.abbr
-      -- local kind_symbol = symbols[item.kind]
-      -- item.kind = kind_symbol .. get_ws(MAX_KIND_WIDTH, #kind_symbol)
-
-      if #content > MAX_LABEL_WIDTH then
-        item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
-      else
-        item.abbr = content .. get_ws(MAX_LABEL_WIDTH, #content)
-      end
-
-      return item
-    end
+    local MIN_LABEL_WIDTH = 10
 
     local kind_icons = {
       Text = "",
@@ -73,6 +56,7 @@ return {
     luasnip.config.setup({})
 
     cmp.setup({
+      ghost_text = { enabled = true },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
@@ -112,14 +96,16 @@ return {
       }),
       window = {
         completion = cmp.config.window.bordered("rounded"),
-        documentation = cmp.config.window.bordered(),
+        documentation = {
+          scrollbar = false,
+        },
       },
       sources = {
         { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "nvim_lua" },
         { name = "luasnip" },
-        { name = "buffer" },
+        { name = "buffer", keyword_length = 10, max_item_count = 20 },
         { name = "path" },
         { name = "calc" },
         { name = "emoji" },
@@ -128,12 +114,22 @@ return {
         { name = "tmux" },
       },
       formatting = {
-        format = format,
+        format = function(entry, vim_item)
+          local label = vim_item.abbr
+          local truncated_label = vim.fn.strcharpart(label, 0, MAX_LABEL_WIDTH)
+          if truncated_label ~= label then
+            vim_item.abbr = truncated_label .. ELLIPSIS_CHAR
+          elseif string.len(label) < MIN_LABEL_WIDTH then
+            local padding = string.rep(" ", MIN_LABEL_WIDTH - string.len(label))
+            vim_item.abbr = label .. padding
+          end
+          vim_item.menu = ""
+          return vim_item
+        end,
         expandable_indicator = true,
         fields = {
           "abbr",
           "kind",
-          "menu",
         },
       },
     })

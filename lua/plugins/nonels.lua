@@ -15,6 +15,7 @@ return {
       mason_null_ls.setup({
         ensure_installed = {
           "prettier", -- prettier formatter
+          "rustfmt", -- rust formatter
           "stylua", -- lua formatter
           "eslint_d", -- js linter
           "golangci_lint", -- go linter

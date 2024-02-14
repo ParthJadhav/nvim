@@ -91,7 +91,7 @@ return {
               VertSplit = { bg = colors.base, fg = colors.surface0 },
               WhichKeyFloat = { bg = colors.mantle },
               YankHighlight = { bg = colors.surface2 },
-              FidgetTask = { fg = colors.subtext2 },
+              FidgetTask = { fg = colors.text },
               FidgetTitle = { fg = colors.peach },
 
               IblIndent = { fg = colors.surface0 },
